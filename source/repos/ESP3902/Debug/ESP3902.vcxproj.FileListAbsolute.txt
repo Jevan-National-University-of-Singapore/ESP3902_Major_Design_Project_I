@@ -1,0 +1,2 @@
+C:\Users\Jevan Goh\source\repos\ESP3902\Debug\ESP3902.vcxproj.AssemblyReference.cache
+C:\Users\Jevan Goh\source\repos\ESP3902\Debug\ESP3902.exe

@@ -1,0 +1,3 @@
+C:\Users\Jevan Goh\source\repos\ESP3902\x64\Debug\ESP3902.vcxproj.CopyComplete
+C:\Users\Jevan Goh\source\repos\ESP3902\x64\Debug\ESP3902.exe
+C:\Users\Jevan Goh\source\repos\ESP3902\x64\Debug\Intel.Realsense.dll

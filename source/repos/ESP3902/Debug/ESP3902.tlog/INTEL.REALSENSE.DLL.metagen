@@ -1,0 +1,1307 @@
+ImageRuntimeVersion: v2.0.50727
+Assembly Intel.RealSense, Version=2.49.*, Culture=Invariant Language (Invariant Country): 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Class Intel.RealSense.ContextHandle: AutoLayout, AnsiClass, Class, Public, Sealed, HasSecurity, BeforeFieldInit
+  :Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class Intel.RealSense.Context: AutoLayout, AnsiClass, Class, Public
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Fields:
+    Int32 ApiVersion : Public, Static, InitOnly
+  Properties:
+    Intel.RealSense.ContextHandle Handle 'get ' : 
+    System.String Version 'get ' : 
+    Intel.RealSense.DeviceList Devices 'get ' : 
+  Events:
+    OnDevicesChangedDelegate OnDevicesChanged: 
+  Methods:
+    get_Handle(): PrivateScope, Public, HideBySig, SpecialName
+    get_Version(): PrivateScope, Public, HideBySig, SpecialName
+    add_OnDevicesChanged(OnDevicesChangedDelegate): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnDevicesChanged(OnDevicesChangedDelegate): PrivateScope, Public, HideBySig, SpecialName
+    QueryDevices(Boolean(Optional, HasDefault)): PrivateScope, Public, HideBySig
+    get_Devices(): PrivateScope, Public, HideBySig, SpecialName
+    AddDevice(String): PrivateScope, Public, HideBySig
+    RemoveDevice(String): PrivateScope, Public, HideBySig
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+Class Intel.RealSense.AdvancedDevice: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Device
+  Properties:
+    Boolean AdvancedModeEnabled 'get set' : 
+    System.String JsonConfiguration 'get set' : 
+  Methods:
+    FromDevice(Device): PrivateScope, Public, Static, HideBySig
+    get_AdvancedModeEnabled(): PrivateScope, Public, HideBySig, SpecialName
+    set_AdvancedModeEnabled(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    get_JsonConfiguration(): PrivateScope, Public, HideBySig, SpecialName
+    set_JsonConfiguration(String): PrivateScope, Public, HideBySig, SpecialName
+Class Intel.RealSense.SerializableDevice: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Device
+  Properties:
+    System.String JsonConfiguration 'get set' : 
+  Methods:
+    FromDevice(Device): PrivateScope, Public, Static, HideBySig
+    get_JsonConfiguration(): PrivateScope, Public, HideBySig, SpecialName
+    set_JsonConfiguration(String): PrivateScope, Public, HideBySig, SpecialName
+Class Intel.RealSense.AutoCalibratedDevice: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.CalibratedDevice
+  Properties:
+    Byte[] CalibrationTable 'get set' : 
+  Methods:
+    FromDevice(Device): PrivateScope, Public, Static, HideBySig
+    RunOnChipCalibration(String, Single&(Out), Int32): PrivateScope, Public, HideBySig
+    RunOnChipCalibration(String, Single&(Out), ProgressCallback, Int32): PrivateScope, Public, HideBySig
+    RunTareCalibration(Single, String, Int32): PrivateScope, Public, HideBySig
+    RunTareCalibration(Single, String, ProgressCallback, Int32): PrivateScope, Public, HideBySig
+    get_CalibrationTable(): PrivateScope, Public, HideBySig, SpecialName
+    set_CalibrationTable(Byte[]): PrivateScope, Public, HideBySig, SpecialName
+Class Intel.RealSense.CalibratedDevice: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Device
+  Methods:
+    FromDevice(Device): PrivateScope, Public, Static, HideBySig
+    WriteCalibration(): PrivateScope, Public, HideBySig
+    reset_to_factory_calibration(): PrivateScope, Public, HideBySig
+Class Intel.RealSense.DebugDevice: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Device
+  Methods:
+    FromDevice(Device): PrivateScope, Public, Static, HideBySig
+    SendReceiveRawData(Byte[]): PrivateScope, Public, HideBySig
+Class Intel.RealSense.Device: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Base.RefCountedPooledObject
+  Properties:
+    Intel.RealSense.InfoCollection Info 'get set' : 
+    System.Collections.ObjectModel.ReadOnlyCollection`1[Intel.RealSense.Sensor] Sensors 'get ' : 
+  Methods:
+    get_Info(): PrivateScope, Public, HideBySig, SpecialName
+    QuerySensors(): PrivateScope, Public, HideBySig
+    get_Sensors(): PrivateScope, Public, HideBySig, SpecialName
+    HardwareReset(): PrivateScope, Public, HideBySig
+    Is(Extension): PrivateScope, Public, HideBySig
+    As(): PrivateScope, Public, HideBySig
+Class Intel.RealSense.DeviceList: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Base.Object
+    Void .ctor(IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.Collections.Generic.IEnumerable`1[Intel.RealSense.Device]
+    System.Collections.IEnumerable
+  Properties:
+    Int32 Count 'get ' : 
+    Intel.RealSense.Device Item [Int32] 'get ' : 
+  Methods:
+    GetEnumerator(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    get_Count(): PrivateScope, Public, HideBySig, SpecialName
+    get_Item(Int32): PrivateScope, Public, HideBySig, SpecialName
+    Contains(Device): PrivateScope, Public, HideBySig
+Class Intel.RealSense.PlaybackDevice: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Device
+  Properties:
+    System.String FileName 'get set' : 
+    Intel.RealSense.PlaybackStatus Status 'get ' : 
+    UInt64 Duration 'get ' : 
+    UInt64 Position 'get set' : 
+    Boolean Realtime 'get set' : 
+  Methods:
+    FromDevice(Device): PrivateScope, Public, Static, HideBySig
+    get_FileName(): PrivateScope, Public, HideBySig, SpecialName
+    Pause(): PrivateScope, Public, HideBySig
+    Resume(): PrivateScope, Public, HideBySig
+    Stop(): PrivateScope, Public, HideBySig
+    get_Status(): PrivateScope, Public, HideBySig, SpecialName
+    get_Duration(): PrivateScope, Public, HideBySig, SpecialName
+    get_Position(): PrivateScope, Public, HideBySig, SpecialName
+    set_Position(UInt64): PrivateScope, Public, HideBySig, SpecialName
+    Seek(Int64): PrivateScope, Public, HideBySig
+    get_Realtime(): PrivateScope, Public, HideBySig, SpecialName
+    set_Realtime(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    SetSpeed(Single): PrivateScope, Public, HideBySig
+Class Intel.RealSense.RecordDevice: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Device
+    Void .ctor(Intel.RealSense.Device, System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    System.String FileName 'get ' : 
+  Methods:
+    FromDevice(Device): PrivateScope, Public, Static, HideBySig
+    Pause(): PrivateScope, Public, HideBySig
+    Resume(): PrivateScope, Public, HideBySig
+    get_FileName(): PrivateScope, Public, HideBySig, SpecialName
+Class Intel.RealSense.SoftwareDevice: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Device
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    AddSensor(String): PrivateScope, Public, HideBySig
+    AddTo(Context): PrivateScope, Public, HideBySig
+    SetMatcher(Matchers): PrivateScope, Public, HideBySig
+Class Intel.RealSense.UpdatableDevice: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Device
+  Events:
+    OnFlashBackupProgressDelegate OnFlashBackupProgress: 
+  Methods:
+    FromDevice(Device): PrivateScope, Public, Static, HideBySig
+    EnterUpdateState(): PrivateScope, Public, HideBySig
+    CreateFlashBackup(): PrivateScope, Public, HideBySig
+    add_OnFlashBackupProgress(OnFlashBackupProgressDelegate): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnFlashBackupProgress(OnFlashBackupProgressDelegate): PrivateScope, Public, HideBySig, SpecialName
+    CheckFirmwareCompatibility(): PrivateScope, Public, HideBySig
+Class Intel.RealSense.UpdateDevice: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Device
+  Events:
+    OnUpdateProgressDelegate OnUpdateProgress: 
+  Methods:
+    FromDevice(Device): PrivateScope, Public, Static, HideBySig
+    Update(Byte[]): PrivateScope, Public, HideBySig
+    add_OnUpdateProgress(OnUpdateProgressDelegate): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnUpdateProgress(OnUpdateProgressDelegate): PrivateScope, Public, HideBySig, SpecialName
+Class Intel.RealSense.FirmwareLogsDevice: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Device
+  Methods:
+    FromDevice(Device): PrivateScope, Public, Static, HideBySig
+    CreateFwLog(): PrivateScope, Public, HideBySig
+    CreateFwParsedLog(): PrivateScope, Public, HideBySig
+    GetNumberOfFwLogs(): PrivateScope, Public, HideBySig
+    GetFwLog(FwLog&): PrivateScope, Public, HideBySig
+    GetFlashLog(FwLog&): PrivateScope, Public, HideBySig
+    InitParser(String): PrivateScope, Public, HideBySig
+    ParseFwLog(FwLog, FwParsedLog&): PrivateScope, Public, HideBySig
+Class Intel.RealSense.DepthFrame: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.VideoFrame
+    Void .ctor(IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    GetDistance(Int32, Int32): PrivateScope, Public, HideBySig
+    GetUnits(): PrivateScope, Public, HideBySig
+Class Intel.RealSense.Frame: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Base.PooledObject
+  Properties:
+    Boolean IsComposite 'get ' : 
+    Int32 DataSize 'get ' : 
+    IntPtr Data 'get ' : 
+    Intel.RealSense.StreamProfile Profile 'get ' : 
+    UInt64 Number 'get ' : 
+    Double Timestamp 'get ' : 
+    Intel.RealSense.Sensor Sensor 'get ' : 
+    Intel.RealSense.TimestampDomain TimestampDomain 'get ' : 
+    Int64 Item [Intel.RealSense.FrameMetadataValue] 'get ' : 
+  Methods:
+    Create(IntPtr): PrivateScope, Public, Static, HideBySig
+    Create(IntPtr): PrivateScope, Public, Static, HideBySig
+    Create(Frame): PrivateScope, Public, Static, HideBySig
+    Is(Extension): PrivateScope, Public, HideBySig
+    As(): PrivateScope, Public, HideBySig
+    Cast(): PrivateScope, Public, HideBySig
+    Clone(): PrivateScope, Public, HideBySig
+    Keep(): PrivateScope, Public, HideBySig
+    get_IsComposite(): PrivateScope, Public, HideBySig, SpecialName
+    get_DataSize(): PrivateScope, Public, HideBySig, SpecialName
+    get_Data(): PrivateScope, Public, HideBySig, SpecialName
+    GetProfile(): PrivateScope, Public, HideBySig
+    get_Profile(): PrivateScope, Public, HideBySig, SpecialName
+    get_Number(): PrivateScope, Public, HideBySig, SpecialName
+    get_Timestamp(): PrivateScope, Public, HideBySig, SpecialName
+    get_Sensor(): PrivateScope, Public, HideBySig, SpecialName
+    get_TimestampDomain(): PrivateScope, Public, HideBySig, SpecialName
+    get_Item(FrameMetadataValue): PrivateScope, Public, HideBySig, SpecialName
+    GetFrameMetadata(FrameMetadataValue): PrivateScope, Public, HideBySig
+    SupportsFrameMetaData(FrameMetadataValue): PrivateScope, Public, HideBySig
+Class Intel.RealSense.FrameQueue: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Base.Object
+    Void .ctor(Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    Int32 Capacity 'get set' : 
+  Methods:
+    get_Capacity(): PrivateScope, Public, HideBySig, SpecialName
+    PollForFrame(T&(Out)): PrivateScope, Public, HideBySig
+    WaitForFrame(UInt32(Optional, HasDefault)): PrivateScope, Public, HideBySig
+    WaitForFrame(UInt32(Optional, HasDefault)): PrivateScope, Public, HideBySig
+    TryWaitForFrame(T&(Out), UInt32(Optional, HasDefault)): PrivateScope, Public, HideBySig
+    WaitForFrames(UInt32(Optional, HasDefault)): PrivateScope, Public, HideBySig
+    Enqueue(Frame): PrivateScope, Public, HideBySig
+Class Intel.RealSense.FrameSet: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Frame
+  Interfaces:
+    Intel.RealSense.ICompositeDisposable
+    System.Collections.Generic.IEnumerable`1[Intel.RealSense.Frame]
+    System.Collections.IEnumerable
+  Properties:
+    Boolean IsComposite 'get ' : 
+    Intel.RealSense.DepthFrame DepthFrame 'get ' : 
+    Intel.RealSense.VideoFrame ColorFrame 'get ' : 
+    Intel.RealSense.VideoFrame InfraredFrame 'get ' : 
+    Intel.RealSense.VideoFrame FishEyeFrame 'get ' : 
+    Intel.RealSense.PoseFrame PoseFrame 'get ' : 
+    Int32 Count 'get ' : 
+    Intel.RealSense.Frame Item [Int32] 'get ' : 
+    Intel.RealSense.Frame Item [Intel.RealSense.Stream, Int32] 'get ' : 
+    Intel.RealSense.Frame Item [Intel.RealSense.Stream, Intel.RealSense.Format, Int32] 'get ' : 
+  Methods:
+    FromFrame(Frame): PrivateScope, Public, Static, HideBySig
+    FromFrame(Frame, FramesReleaser): PrivateScope, Public, Static, HideBySig (Obsolete)
+    get_IsComposite(): PrivateScope, Public, HideBySig, SpecialName
+    AsFrame(): PrivateScope, Public, HideBySig
+    ForEach(Action`1): PrivateScope, Public, HideBySig
+    FirstOrDefault(Stream, Format(Optional, HasDefault)): PrivateScope, Public, HideBySig
+    FirstOrDefault(Stream, Format(Optional, HasDefault)): PrivateScope, Public, HideBySig
+    FirstOrDefault(Predicate`1): PrivateScope, Public, HideBySig
+    First(Stream, Format(Optional, HasDefault)): PrivateScope, Public, HideBySig
+    First(Stream, Format(Optional, HasDefault)): PrivateScope, Public, HideBySig
+    get_DepthFrame(): PrivateScope, Public, HideBySig, SpecialName
+    get_ColorFrame(): PrivateScope, Public, HideBySig, SpecialName
+    get_InfraredFrame(): PrivateScope, Public, HideBySig, SpecialName
+    get_FishEyeFrame(): PrivateScope, Public, HideBySig, SpecialName
+    get_PoseFrame(): PrivateScope, Public, HideBySig, SpecialName
+    GetEnumerator(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    get_Count(): PrivateScope, Public, HideBySig, SpecialName
+    get_Item(Int32): PrivateScope, Public, HideBySig, SpecialName
+    get_Item(Stream, Int32(Optional, HasDefault)): PrivateScope, Public, HideBySig, SpecialName
+    get_Item(Stream, Format, Int32(Optional, HasDefault)): PrivateScope, Public, HideBySig, SpecialName
+    Create(IntPtr): PrivateScope, Public, Static, HideBySig
+    AddDisposable(IDisposable): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+Class Intel.RealSense.FrameSetExtensions: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Methods:
+    AsFrameSet(Frame): PrivateScope, Public, Static, HideBySig
+Class Intel.RealSense.FramesReleaser: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    Intel.RealSense.ICompositeDisposable
+    System.IDisposable
+  Methods:
+    ScopedReturn(FramesReleaser, T): PrivateScope, Public, Static, HideBySig (Obsolete)
+    AddDisposable(IDisposable): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+Class Intel.RealSense.Points: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Frame
+    Void .ctor(IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    Int32 Count 'get set' : 
+    IntPtr VertexData 'get ' : 
+    IntPtr TextureData 'get ' : 
+  Methods:
+    get_Count(): PrivateScope, Public, HideBySig, SpecialName
+    get_VertexData(): PrivateScope, Public, HideBySig, SpecialName
+    CopyVertices(T[]): PrivateScope, Public, HideBySig
+    get_TextureData(): PrivateScope, Public, HideBySig, SpecialName
+    CopyTextureCoords(T[]): PrivateScope, Public, HideBySig
+    ExportToPLY(String, Frame): PrivateScope, Public, HideBySig
+Class Intel.RealSense.VideoFrame: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Frame
+    Void .ctor(IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    Int32 Width 'get ' : 
+    Int32 Height 'get ' : 
+    Int32 Stride 'get ' : 
+    Int32 BitsPerPixel 'get ' : 
+  Methods:
+    get_Width(): PrivateScope, Public, HideBySig, SpecialName
+    get_Height(): PrivateScope, Public, HideBySig, SpecialName
+    get_Stride(): PrivateScope, Public, HideBySig, SpecialName
+    get_BitsPerPixel(): PrivateScope, Public, HideBySig, SpecialName
+    CopyTo(T[]): PrivateScope, Public, HideBySig
+    CopyTo(IntPtr): PrivateScope, Public, HideBySig
+    CopyFrom(T[]): PrivateScope, Public, HideBySig
+    CopyFrom(IntPtr): PrivateScope, Public, HideBySig
+Class Intel.RealSense.DisparityFrame: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.DepthFrame
+    Void .ctor(IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    Single Baseline 'get ' : 
+  Methods:
+    get_Baseline(): PrivateScope, Public, HideBySig, SpecialName
+Class Intel.RealSense.MotionFrame: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Frame
+    Void .ctor(IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    Intel.RealSense.Math.Vector MotionData 'get ' : 
+  Methods:
+    get_MotionData(): PrivateScope, Public, HideBySig, SpecialName
+    CopyTo(Single[]): PrivateScope, Public, HideBySig
+    CopyTo(T&(Out)): PrivateScope, Public, HideBySig
+    CopyTo(T): PrivateScope, Public, HideBySig
+Class Intel.RealSense.PoseFrame: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Frame
+    Void .ctor(IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    Intel.RealSense.Pose PoseData 'get ' : 
+  Methods:
+    get_PoseData(): PrivateScope, Public, HideBySig, SpecialName
+    CopyTo(T&(Out)): PrivateScope, Public, HideBySig
+    CopyTo(T): PrivateScope, Public, HideBySig
+Class Intel.RealSense.Config: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Base.Object
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    EnableStream(Stream, Int32(Optional, HasDefault)): PrivateScope, Public, HideBySig
+    EnableStream(Stream, Int32, Int32, Int32, Format(Optional, HasDefault), Int32(Optional, HasDefault)): PrivateScope, Public, HideBySig
+    EnableStream(Stream, Int32, Int32, Format(Optional, HasDefault), Int32(Optional, HasDefault)): PrivateScope, Public, HideBySig
+    EnableStream(Stream, Format, Int32(Optional, HasDefault)): PrivateScope, Public, HideBySig
+    EnableStream(Stream, Int32, Format, Int32(Optional, HasDefault)): PrivateScope, Public, HideBySig
+    EnableAllStreams(): PrivateScope, Public, HideBySig
+    EnableDevice(String): PrivateScope, Public, HideBySig
+    EnableDeviceFromFile(String): PrivateScope, Public, HideBySig
+    EnableDeviceFromFile(String, Boolean): PrivateScope, Public, HideBySig
+    EnableRecordToFile(String): PrivateScope, Public, HideBySig
+    DisableStream(Stream, Int32(Optional, HasDefault)): PrivateScope, Public, HideBySig
+    DisableAllStreams(): PrivateScope, Public, HideBySig
+    CanResolve(Pipeline): PrivateScope, Public, HideBySig
+    Resolve(Pipeline): PrivateScope, Public, HideBySig
+Class Intel.RealSense.Pipeline: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Base.Object
+    Void .ctor(Intel.RealSense.Context): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    Intel.RealSense.PipelineProfile ActiveProfile 'get ' : 
+  Methods:
+    Start(): PrivateScope, Public, HideBySig
+    Start(Config): PrivateScope, Public, HideBySig
+    Start(FrameCallback): PrivateScope, Public, HideBySig
+    Start(Config, FrameCallback): PrivateScope, Public, HideBySig
+    Stop(): PrivateScope, Public, HideBySig
+    WaitForFrames(UInt32(Optional, HasDefault)): PrivateScope, Public, HideBySig
+    TryWaitForFrames(FrameSet&(Out), UInt32(Optional, HasDefault)): PrivateScope, Public, HideBySig
+    PollForFrames(FrameSet&(Out)): PrivateScope, Public, HideBySig
+    get_ActiveProfile(): PrivateScope, Public, HideBySig, SpecialName
+Class Intel.RealSense.PipelineProfile: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Base.Object
+    Void .ctor(IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    Intel.RealSense.Device Device 'get ' : 
+    System.Collections.ObjectModel.ReadOnlyCollection`1[Intel.RealSense.StreamProfile] Streams 'get ' : 
+  Methods:
+    get_Device(): PrivateScope, Public, HideBySig, SpecialName
+    get_Streams(): PrivateScope, Public, HideBySig, SpecialName
+    GetStream(Stream, Int32(Optional, HasDefault)): PrivateScope, Public, HideBySig
+    GetStream(Stream, Int32(Optional, HasDefault)): PrivateScope, Public, HideBySig
+Class Intel.RealSense.Align: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.ProcessingBlock
+    Void .ctor(Intel.RealSense.Stream): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Process(FrameSet, FramesReleaser): PrivateScope, Public, HideBySig (Obsolete)
+Class Intel.RealSense.Colorizer: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.ProcessingBlock
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Colorize(Frame, FramesReleaser(Optional, HasDefault)): PrivateScope, Public, HideBySig (Obsolete)
+Class Intel.RealSense.CustomProcessingBlock: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(FrameProcessorCallback): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    Intel.RealSense.IOptions
+    System.IDisposable
+  Properties:
+    Intel.RealSense.IOptionsContainer Options 'get set' : 
+    Intel.RealSense.FrameQueue Queue 'get ' : 
+  Methods:
+    get_Options(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_Queue(): PrivateScope, Public, HideBySig, SpecialName
+    Process(T): PrivateScope, Public, HideBySig
+    Start(FrameQueue): PrivateScope, Public, HideBySig
+    Start(): PrivateScope, Public, HideBySig
+    Start(FrameCallback): PrivateScope, Public, HideBySig
+    RegisterOption(Option, Single, Single, Single, Single): PrivateScope, Public, HideBySig
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+Class Intel.RealSense.DecimationFilter: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.ProcessingBlock
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    ApplyFilter(Frame, FramesReleaser): PrivateScope, Public, HideBySig (Obsolete)
+Class Intel.RealSense.DisparityTransform: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.ProcessingBlock
+    Void .ctor(Boolean): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    ApplyFilter(Frame, FramesReleaser(Optional, HasDefault)): PrivateScope, Public, HideBySig (Obsolete)
+Struct Intel.RealSense.FrameSource: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
+  :System.ValueType
+  Methods:
+    AllocateVideoFrame(StreamProfile, Frame, Int32, Int32, Int32, Int32, Extension(Optional, HasDefault)): PrivateScope, Public, HideBySig
+    AllocateMotionFrame(StreamProfile, Frame, Extension(Optional, HasDefault)): PrivateScope, Public, HideBySig
+    AllocateCompositeFrame(FramesReleaser, Frame[]): PrivateScope, Public, HideBySig (Obsolete)
+    AllocateCompositeFrame(Frame[]): PrivateScope, Public, HideBySig
+    AllocateCompositeFrame(IList`1): PrivateScope, Public, HideBySig
+    FrameReady(Frame): PrivateScope, Public, HideBySig
+Class Intel.RealSense.HoleFillingFilter: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.ProcessingBlock
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    ApplyFilter(Frame, FramesReleaser(Optional, HasDefault)): PrivateScope, Public, HideBySig (Obsolete)
+Class Intel.RealSense.PointCloud: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.ProcessingBlock
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Calculate(Frame, FramesReleaser(Optional, HasDefault)): PrivateScope, Public, HideBySig (Obsolete)
+    MapTexture(VideoFrame): PrivateScope, Public, HideBySig
+Interface Intel.RealSense.IProcessingBlock: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Interfaces:
+    Intel.RealSense.IOptions
+  Methods:
+    Process(Frame): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+Class Intel.RealSense.ProcessingBlock: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Base.Object
+    Void .ctor(IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    Intel.RealSense.IProcessingBlock
+    Intel.RealSense.IOptions
+  Properties:
+    Intel.RealSense.IOptionsContainer Options 'get set' : 
+    Intel.RealSense.InfoCollection Info 'get set' : 
+    Intel.RealSense.FrameQueue Queue 'get ' : 
+  Methods:
+    get_Options(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_Info(): PrivateScope, Public, HideBySig, SpecialName
+    get_Queue(): PrivateScope, Public, HideBySig, SpecialName
+    Process(Frame): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    Process(Frame): PrivateScope, Public, HideBySig
+    Is(Extension): PrivateScope, Public, HideBySig
+    As(): PrivateScope, Public, HideBySig
+Class Intel.RealSense.IProcessingBlockExtensions: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Methods:
+    ApplyFilter(Frame, IProcessingBlock): PrivateScope, Public, Static, HideBySig
+Class Intel.RealSense.SpatialFilter: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.ProcessingBlock
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    ApplyFilter(Frame, FramesReleaser(Optional, HasDefault)): PrivateScope, Public, HideBySig (Obsolete)
+Class Intel.RealSense.Syncer: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.ProcessingBlock
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    SubmitFrame(Frame): PrivateScope, Public, HideBySig
+    WaitForFrames(UInt32(Optional, HasDefault)): PrivateScope, Public, HideBySig
+    PollForFrames(FrameSet&(Out)): PrivateScope, Public, HideBySig
+Class Intel.RealSense.TemporalFilter: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.ProcessingBlock
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    ApplyFilter(Frame, FramesReleaser(Optional, HasDefault)): PrivateScope, Public, HideBySig (Obsolete)
+Class Intel.RealSense.ZeroOrderInvalidationFilter: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.ProcessingBlock
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    ApplyFilter(Frame, FramesReleaser): PrivateScope, Public, HideBySig (Obsolete)
+Class Intel.RealSense.ThresholdFilter: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.ProcessingBlock
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    ApplyFilter(Frame, FramesReleaser(Optional, HasDefault)): PrivateScope, Public, HideBySig (Obsolete)
+Class Intel.RealSense.UnitsTransform: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.ProcessingBlock
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    ApplyFilter(Frame, FramesReleaser(Optional, HasDefault)): PrivateScope, Public, HideBySig (Obsolete)
+Class Intel.RealSense.DepthHuffmanDecoder: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.ProcessingBlock
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    ApplyFilter(Frame, FramesReleaser): PrivateScope, Public, HideBySig (Obsolete)
+Class Intel.RealSense.StreamProfile: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Base.PooledObject
+  Properties:
+    Intel.RealSense.Stream Stream 'get ' : 
+    Intel.RealSense.Format Format 'get ' : 
+    Int32 Framerate 'get ' : 
+    Int32 Index 'get ' : 
+    Int32 UniqueID 'get ' : 
+    Boolean IsDefault 'get set' : 
+    Boolean IsCloned 'get ' : 
+  Methods:
+    get_Stream(): PrivateScope, Public, HideBySig, SpecialName
+    get_Format(): PrivateScope, Public, HideBySig, SpecialName
+    get_Framerate(): PrivateScope, Public, HideBySig, SpecialName
+    get_Index(): PrivateScope, Public, HideBySig, SpecialName
+    get_UniqueID(): PrivateScope, Public, HideBySig, SpecialName
+    get_IsDefault(): PrivateScope, Public, HideBySig, SpecialName
+    get_IsCloned(): PrivateScope, Public, HideBySig, SpecialName
+    GetExtrinsicsTo(StreamProfile): PrivateScope, Public, HideBySig
+    RegisterExtrinsicsTo(StreamProfile, Extrinsics): PrivateScope, Public, HideBySig
+    Clone(Stream, Int32, Format): PrivateScope, Public, HideBySig
+    Is(Extension): PrivateScope, Public, HideBySig
+    As(): PrivateScope, Public, HideBySig
+    Cast(): PrivateScope, Public, HideBySig
+Class Intel.RealSense.VideoStreamProfile: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.StreamProfile
+  Properties:
+    Int32 Width 'get ' : 
+    Int32 Height 'get ' : 
+  Methods:
+    GetIntrinsics(): PrivateScope, Public, HideBySig
+    Clone(Stream, Int32, Format, Int32, Int32, Intrinsics): PrivateScope, Public, HideBySig
+    get_Width(): PrivateScope, Public, HideBySig, SpecialName
+    get_Height(): PrivateScope, Public, HideBySig, SpecialName
+Class Intel.RealSense.MotionStreamProfile: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.StreamProfile
+    Void .ctor(IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    GetIntrinsics(): PrivateScope, Public, HideBySig
+Class Intel.RealSense.PoseStreamProfile: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.StreamProfile
+    Void .ctor(IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class Intel.RealSense.Sensor: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Base.RefCountedPooledObject
+  Interfaces:
+    Intel.RealSense.IOptions
+  Properties:
+    Intel.RealSense.InfoCollection Info 'get set' : 
+    Intel.RealSense.IOptionsContainer Options 'get set' : 
+    Single DepthScale 'get ' : 
+    Intel.RealSense.AutoExposureROI AutoExposureSettings 'get ' : 
+    System.Collections.ObjectModel.ReadOnlyCollection`1[Intel.RealSense.StreamProfile] StreamProfiles 'get ' : 
+    System.Collections.ObjectModel.ReadOnlyCollection`1[Intel.RealSense.ProcessingBlock] ProcessingBlocks 'get ' : 
+  Methods:
+    Create(Sensor): PrivateScope, Public, Static, HideBySig
+    get_Info(): PrivateScope, Public, HideBySig, SpecialName
+    get_Options(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    Open(StreamProfile): PrivateScope, Public, HideBySig
+    Open(StreamProfile[]): PrivateScope, Public, HideBySig
+    Start(FrameQueue): PrivateScope, Public, HideBySig
+    Start(FrameCallback): PrivateScope, Public, HideBySig
+    Stop(): PrivateScope, Public, HideBySig
+    Close(): PrivateScope, Public, HideBySig
+    Is(Extension): PrivateScope, Public, HideBySig
+    As(): PrivateScope, Public, HideBySig
+    get_DepthScale(): PrivateScope, Public, HideBySig, SpecialName
+    get_AutoExposureSettings(): PrivateScope, Public, HideBySig, SpecialName
+    get_StreamProfiles(): PrivateScope, Public, HideBySig, SpecialName
+    get_ProcessingBlocks(): PrivateScope, Public, HideBySig, SpecialName
+Class Intel.RealSense.SoftwareSensor: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Sensor
+  Methods:
+    AddVideoFrame(SoftwareVideoFrame): PrivateScope, Public, HideBySig
+    AddVideoFrame(T[], Int32, Int32, Double, TimestampDomain, Int32, VideoStreamProfile): PrivateScope, Public, HideBySig
+    AddMotionFrame(SoftwareMotionFrame): PrivateScope, Public, HideBySig
+    AddPoseFrame(SoftwarePoseFrame): PrivateScope, Public, HideBySig
+    AddVideoStream(SoftwareVideoStream): PrivateScope, Public, HideBySig
+    AddMotionStream(SoftwareMotionStream): PrivateScope, Public, HideBySig
+    AddPoseStream(SoftwarePoseStream): PrivateScope, Public, HideBySig
+    SetMetadata(FrameMetadataValue, Int64): PrivateScope, Public, HideBySig
+    AddReadOnlyOption(Option, Single): PrivateScope, Public, HideBySig
+    UpdateReadOnlyOption(Option, Single): PrivateScope, Public, HideBySig
+Class Intel.RealSense.PoseSensor: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Sensor
+  Methods:
+    FromSensor(Sensor): PrivateScope, Public, Static, HideBySig
+    ExportLocalizationMap(): PrivateScope, Public, HideBySig
+    ImportLocalizationMap(Byte[]): PrivateScope, Public, HideBySig
+    SetStaticNode(String, Vector, Quaternion): PrivateScope, Public, HideBySig
+    GetStaticNode(String, Vector&(Out), Quaternion&(Out)): PrivateScope, Public, HideBySig
+Class Intel.RealSense.MaxUsableRangeSensor: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Sensor
+  Methods:
+    GetMaxUsableRange(): PrivateScope, Public, HideBySig
+Struct Intel.RealSense.Distortion: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Intel.RealSense.Distortion None = 0 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Distortion ModifiedBrownConrady = 1 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Distortion InverseBrownConrady = 2 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Distortion Ftheta = 3 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Distortion BrownConrady = 4 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Distortion KannalaBrandt4 = 5 : Public, Static, Literal, HasDefault
+Struct Intel.RealSense.ExceptionType: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Intel.RealSense.ExceptionType Unknown = 0 : Public, Static, Literal, HasDefault
+    Intel.RealSense.ExceptionType CameraDisconnected = 1 : Public, Static, Literal, HasDefault
+    Intel.RealSense.ExceptionType Backend = 2 : Public, Static, Literal, HasDefault
+    Intel.RealSense.ExceptionType InvalidValue = 3 : Public, Static, Literal, HasDefault
+    Intel.RealSense.ExceptionType WrongApiCallSequence = 4 : Public, Static, Literal, HasDefault
+    Intel.RealSense.ExceptionType NotImplemented = 5 : Public, Static, Literal, HasDefault
+    Intel.RealSense.ExceptionType DeviceInRecoveryMode = 6 : Public, Static, Literal, HasDefault
+    Intel.RealSense.ExceptionType Io = 7 : Public, Static, Literal, HasDefault
+Struct Intel.RealSense.Extension: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Intel.RealSense.Extension Unknown = 0 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension Debug = 1 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension Info = 2 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension Motion = 3 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension Options = 4 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension Video = 5 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension Roi = 6 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension DepthSensor = 7 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension VideoFrame = 8 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension MotionFrame = 9 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension CompositeFrame = 10 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension Points = 11 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension DepthFrame = 12 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension AdvancedMode = 13 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension Record = 14 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension VideoProfile = 15 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension Playback = 16 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension DepthStereoSensor = 17 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension DisparityFrame = 18 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension MotionProfile = 19 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension PoseFrame = 20 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension PoseProfile = 21 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension Tm2 = 22 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension SoftwareDevice = 23 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension SoftwareSensor = 24 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension DecimationFilter = 25 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension ThresholdFilter = 26 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension DisparityFilter = 27 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension SpatialFilter = 28 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension TemporalFilter = 29 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension HoleFillingFilter = 30 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension ZeroOrderFilter = 31 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension RecommendedFilters = 32 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension Pose = 33 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension PoseSensor = 34 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension WheelOdometer = 35 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension GlobalTimer = 36 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension Updatable = 37 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension UpdateDevice = 38 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension L500DepthSensor = 39 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension TM2Sensor = 40 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension AutoCalibratedDevice = 41 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension ColorSensor = 42 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension MotionSensor = 43 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension FisheyeSensor = 44 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension DepthHuffmanDecoder = 45 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension Serializable = 46 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension FirmwareLogger = 47 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Extension MaxUsableRangeSensor = 53 : Public, Static, Literal, HasDefault
+Struct Intel.RealSense.Format: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Intel.RealSense.Format Any = 0 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format Z16 = 1 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format Disparity16 = 2 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format Xyz32f = 3 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format Yuyv = 4 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format Rgb8 = 5 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format Bgr8 = 6 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format Rgba8 = 7 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format Bgra8 = 8 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format Y8 = 9 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format Y16 = 10 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format Raw10 = 11 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format Raw16 = 12 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format Raw8 = 13 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format Uyvy = 14 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format MotionRaw = 15 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format MotionXyz32f = 16 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format GpioRaw = 17 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format SixDOF = 18 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format Disparity32 = 19 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format Y10BPack = 20 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format Distance = 21 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format Mjpeg = 22 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format Y8i = 23 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format Y12I = 24 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format Inzi = 25 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format Invi = 26 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format W10 = 27 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format Z16H = 28 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format FG = 29 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Format Y411 = 30 : Public, Static, Literal, HasDefault
+Struct Intel.RealSense.FrameMetadataValue: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Intel.RealSense.FrameMetadataValue FrameCounter = 0 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue FrameTimestamp = 1 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue SensorTimestamp = 2 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue ActualExposure = 3 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue GainLevel = 4 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue AutoExposure = 5 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue WhiteBalance = 6 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue TimeOfArrival = 7 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue Temperature = 8 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue BackendTimestamp = 9 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue ActualFps = 10 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue FrameLaserPower = 11 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue FrameLaserPowerMode = 12 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue ExposurePriority = 13 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue ExposureRoiLeft = 14 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue ExposureRoiRight = 15 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue ExposureRoiTop = 16 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue ExposureRoiBottom = 17 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue Brightness = 18 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue Contrast = 19 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue Saturation = 20 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue Sharpness = 21 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue AutoWhiteBalanceTemperature = 22 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue BacklightCompensation = 23 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue Hue = 24 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue Gamma = 25 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue ManualWhiteBalance = 26 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue PowerLineFrequency = 27 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue LowLightCompensation = 28 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue FrameEmitterMode = 29 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue FrameLedPower = 30 : Public, Static, Literal, HasDefault
+    Intel.RealSense.FrameMetadataValue RawFrameSizeBytes = 31 : Public, Static, Literal, HasDefault
+Struct Intel.RealSense.LogSeverity: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Intel.RealSense.LogSeverity Debug = 0 : Public, Static, Literal, HasDefault
+    Intel.RealSense.LogSeverity Info = 1 : Public, Static, Literal, HasDefault
+    Intel.RealSense.LogSeverity Warn = 2 : Public, Static, Literal, HasDefault
+    Intel.RealSense.LogSeverity Error = 3 : Public, Static, Literal, HasDefault
+    Intel.RealSense.LogSeverity Fatal = 4 : Public, Static, Literal, HasDefault
+    Intel.RealSense.LogSeverity None = 5 : Public, Static, Literal, HasDefault
+Struct Intel.RealSense.Matchers: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Intel.RealSense.Matchers DI = 0 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Matchers DI_C = 1 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Matchers DLR_C = 2 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Matchers DLR = 3 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Matchers Default = 4 : Public, Static, Literal, HasDefault
+Struct Intel.RealSense.NotificationCategory: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Intel.RealSense.NotificationCategory FramesTimeout = 0 : Public, Static, Literal, HasDefault
+    Intel.RealSense.NotificationCategory FrameCorrupted = 1 : Public, Static, Literal, HasDefault
+    Intel.RealSense.NotificationCategory HardwareError = 2 : Public, Static, Literal, HasDefault
+    Intel.RealSense.NotificationCategory HardwareEvent = 3 : Public, Static, Literal, HasDefault
+    Intel.RealSense.NotificationCategory UnknownError = 4 : Public, Static, Literal, HasDefault
+    Intel.RealSense.NotificationCategory FirmwareUpdateRecommended = 5 : Public, Static, Literal, HasDefault
+    Intel.RealSense.NotificationCategory PoseRelocalization = 6 : Public, Static, Literal, HasDefault
+Struct Intel.RealSense.Option: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Intel.RealSense.Option BacklightCompensation = 0 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option Brightness = 1 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option Contrast = 2 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option Exposure = 3 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option Gain = 4 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option Gamma = 5 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option Hue = 6 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option Saturation = 7 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option Sharpness = 8 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option WhiteBalance = 9 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option EnableAutoExposure = 10 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option EnableAutoWhiteBalance = 11 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option VisualPreset = 12 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option LaserPower = 13 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option Accuracy = 14 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option MotionRange = 15 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option FilterOption = 16 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option ConfidenceThreshold = 17 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option EmitterEnabled = 18 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option FramesQueueSize = 19 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option TotalFrameDrops = 20 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option AutoExposureMode = 21 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option PowerLineFrequency = 22 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option AsicTemperature = 23 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option ErrorPollingEnabled = 24 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option ProjectorTemperature = 25 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option OutputTriggerEnabled = 26 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option MotionModuleTemperature = 27 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option DepthUnits = 28 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option EnableMotionCorrection = 29 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option AutoExposurePriority = 30 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option ColorScheme = 31 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option HistogramEqualizationEnabled = 32 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option MinDistance = 33 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option MaxDistance = 34 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option TextureSource = 35 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option FilterMagnitude = 36 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option FilterSmoothAlpha = 37 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option FilterSmoothDelta = 38 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option HolesFill = 39 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option StereoBaseline = 40 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option AutoExposureConvergeStep = 41 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option InterCamSyncMode = 42 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option StreamFilter = 43 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option StreamFormatFilter = 44 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option StreamIndexFilter = 45 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option EmitterOnOff = 46 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option ZeroOrderPointX = 47 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option ZeroOrderPointY = 48 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option LLDTemperature = 49 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option MCTemperature = 50 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option MATemperature = 51 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option HardwarePreset = 52 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option GlobalTimeEnabled = 53 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option APDTemperature = 54 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option EnableMapping = 55 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option EnableRelocalization = 56 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option EnablePoseJumping = 57 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option EnableDynamicCalibration = 58 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option DepthOffset = 59 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option LedPower = 60 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option ZeroOrderEnabled = 61 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option EnableMapPreservation = 62 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option FreeFallDetectionEnabled = 63 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option APDExposureTime = 64 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option PostProcessingSharpening = 65 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option PreProcessingSharpening = 66 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option NoiseFilterLevel = 67 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option InvalidationBypass = 68 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option AmbientLightEnvLevel = 69 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option DigitalGain = 69 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option SensorMode = 70 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option EmitterAlwaysOn = 71 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option ThermalCompensation = 72 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option TriggerCameraAccuracyHealth = 73 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option ResetCameraAccuracyHealth = 74 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option HostPerformance = 75 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option HdrEnabled = 76 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option SequenceName = 77 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option SequenceSize = 78 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option SequenceId = 79 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option HumidityTemperature = 80 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option EnableMaxUsableRange = 81 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option AlternateIR = 82 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option NoiseEstimation = 83 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option EnableIrReflectivity = 84 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option auto_exposure_limit = 85 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option auto_gain_limit = 86 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option auto_rx_sensitivity = 87 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option transmitter_frequency = 88 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option vertical_binning = 89 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Option receiver_sensitivity = 90 : Public, Static, Literal, HasDefault
+Struct Intel.RealSense.PlaybackStatus: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Intel.RealSense.PlaybackStatus Unknown = 0 : Public, Static, Literal, HasDefault
+    Intel.RealSense.PlaybackStatus Playing = 1 : Public, Static, Literal, HasDefault
+    Intel.RealSense.PlaybackStatus Paused = 2 : Public, Static, Literal, HasDefault
+    Intel.RealSense.PlaybackStatus Stopped = 3 : Public, Static, Literal, HasDefault
+Struct Intel.RealSense.RecordingMode: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Intel.RealSense.RecordingMode BlankFrames = 0 : Public, Static, Literal, HasDefault
+    Intel.RealSense.RecordingMode Compressed = 1 : Public, Static, Literal, HasDefault
+    Intel.RealSense.RecordingMode BestQuality = 2 : Public, Static, Literal, HasDefault
+Struct Intel.RealSense.Rs400VisualPreset: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Intel.RealSense.Rs400VisualPreset Custom = 0 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Rs400VisualPreset ShortRange = 1 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Rs400VisualPreset Hand = 2 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Rs400VisualPreset HighAccuracy = 3 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Rs400VisualPreset HighDensity = 4 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Rs400VisualPreset MediumDensity = 5 : Public, Static, Literal, HasDefault
+Struct Intel.RealSense.Sr300VisualPreset: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Intel.RealSense.Sr300VisualPreset ShortRange = 0 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Sr300VisualPreset LongRange = 1 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Sr300VisualPreset BackgroundSegmentation = 2 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Sr300VisualPreset GestureRecognition = 3 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Sr300VisualPreset ObjectScanning = 4 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Sr300VisualPreset FaceAnalytics = 5 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Sr300VisualPreset FaceLogin = 6 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Sr300VisualPreset GrCursor = 7 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Sr300VisualPreset Default = 8 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Sr300VisualPreset MidRange = 9 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Sr300VisualPreset IrOnly = 10 : Public, Static, Literal, HasDefault
+Struct Intel.RealSense.L500VisualPreset: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Intel.RealSense.L500VisualPreset Custom = 0 : Public, Static, Literal, HasDefault
+    Intel.RealSense.L500VisualPreset Default = 1 : Public, Static, Literal, HasDefault
+    Intel.RealSense.L500VisualPreset NoAmbient = 2 : Public, Static, Literal, HasDefault
+    Intel.RealSense.L500VisualPreset LowAmbient = 3 : Public, Static, Literal, HasDefault
+    Intel.RealSense.L500VisualPreset MaxRange = 4 : Public, Static, Literal, HasDefault
+    Intel.RealSense.L500VisualPreset ShortRange = 5 : Public, Static, Literal, HasDefault
+Struct Intel.RealSense.Stream: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Intel.RealSense.Stream Any = 0 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Stream Depth = 1 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Stream Color = 2 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Stream Infrared = 3 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Stream Fisheye = 4 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Stream Gyro = 5 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Stream Accel = 6 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Stream Gpio = 7 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Stream Pose = 8 : Public, Static, Literal, HasDefault
+    Intel.RealSense.Stream Confidence = 9 : Public, Static, Literal, HasDefault
+Struct Intel.RealSense.TimestampDomain: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Intel.RealSense.TimestampDomain HardwareClock = 0 : Public, Static, Literal, HasDefault
+    Intel.RealSense.TimestampDomain SystemTime = 1 : Public, Static, Literal, HasDefault
+    Intel.RealSense.TimestampDomain GlobalTime = 2 : Public, Static, Literal, HasDefault
+Struct Intel.RealSense.CameraInfo: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Intel.RealSense.CameraInfo Name = 0 : Public, Static, Literal, HasDefault
+    Intel.RealSense.CameraInfo SerialNumber = 1 : Public, Static, Literal, HasDefault
+    Intel.RealSense.CameraInfo FirmwareVersion = 2 : Public, Static, Literal, HasDefault
+    Intel.RealSense.CameraInfo RecommendedFirmwareVersion = 3 : Public, Static, Literal, HasDefault
+    Intel.RealSense.CameraInfo PhysicalPort = 4 : Public, Static, Literal, HasDefault
+    Intel.RealSense.CameraInfo DebugOpCode = 5 : Public, Static, Literal, HasDefault
+    Intel.RealSense.CameraInfo AdvancedMode = 6 : Public, Static, Literal, HasDefault
+    Intel.RealSense.CameraInfo ProductId = 7 : Public, Static, Literal, HasDefault
+    Intel.RealSense.CameraInfo CameraLocked = 8 : Public, Static, Literal, HasDefault
+    Intel.RealSense.CameraInfo UsbTypeDescriptor = 9 : Public, Static, Literal, HasDefault
+Class Intel.RealSense.AutoExposureROI: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    GetRegionOfInterest(): PrivateScope, Public, HideBySig
+    SetRegionOfInterest(ROI): PrivateScope, Public, HideBySig
+Class Intel.RealSense.FrameCallback: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Invoke(Frame): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    BeginInvoke(Frame, AsyncCallback, Object): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+Class Intel.RealSense.frame_callback: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Invoke(IntPtr, IntPtr): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    BeginInvoke(IntPtr, IntPtr, AsyncCallback, Object): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+Class Intel.RealSense.frame_processor_callback: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Invoke(IntPtr, IntPtr, IntPtr): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    BeginInvoke(IntPtr, IntPtr, IntPtr, AsyncCallback, Object): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+Class Intel.RealSense.frame_deleter: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Invoke(IntPtr): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    BeginInvoke(IntPtr, AsyncCallback, Object): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+Class Intel.RealSense.rs2_devices_changed_callback: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Invoke(IntPtr, IntPtr, IntPtr): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    BeginInvoke(IntPtr, IntPtr, IntPtr, AsyncCallback, Object): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+Class Intel.RealSense.ProgressCallback: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Invoke(IntPtr): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    BeginInvoke(IntPtr, AsyncCallback, Object): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+Class Intel.RealSense.rs2_update_progress_callback: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Invoke(Single, IntPtr): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    BeginInvoke(Single, IntPtr, AsyncCallback, Object): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+Struct Intel.RealSense.Extrinsics: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, Serializable, BeforeFieldInit
+  :System.ValueType
+  Fields:
+    Single[] rotation : Public, HasFieldMarshal
+    Single[] translation : Public, HasFieldMarshal
+Struct Intel.RealSense.Intrinsics: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, Serializable, BeforeFieldInit
+  :System.ValueType
+  Fields:
+    Int32 width : Public
+    Int32 height : Public
+    Single ppx : Public
+    Single ppy : Public
+    Single fx : Public
+    Single fy : Public
+    Intel.RealSense.Distortion model : Public
+    Single[] coeffs : Public, HasFieldMarshal
+  Properties:
+    Single[] FOV 'get ' : 
+  Methods:
+    ToString(): PrivateScope, Public, Virtual, HideBySig
+    get_FOV(): PrivateScope, Public, HideBySig, SpecialName
+Struct Intel.RealSense.MotionDeviceIntrinsics: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, Serializable, BeforeFieldInit
+  :System.ValueType
+  Fields:
+    Single[] data : Public, HasFieldMarshal
+    Single[] noise_variances : Public, HasFieldMarshal
+    Single[] bias_variances : Public, HasFieldMarshal
+Struct Intel.RealSense.ROI: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
+  :System.ValueType
+  Fields:
+    Int32 minX : Public
+    Int32 minY : Public
+    Int32 maxX : Public
+    Int32 maxY : Public
+Class Intel.RealSense.SoftwareVideoFrame: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Serializable, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    IntPtr pixels : Public
+    Intel.RealSense.frame_deleter deleter : Public
+    Int32 stride : Public
+    Int32 bpp : Public
+    Double timestamp : Public
+    Intel.RealSense.TimestampDomain domain : Public
+    Int32 frame_number : Public
+    IntPtr profile : Public
+Struct Intel.RealSense.SoftwareVideoStream: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, Serializable, BeforeFieldInit
+  :System.ValueType
+  Fields:
+    Intel.RealSense.Stream type : Public
+    Int32 index : Public
+    Int32 uid : Public
+    Int32 width : Public
+    Int32 height : Public
+    Int32 fps : Public
+    Int32 bpp : Public
+    Intel.RealSense.Format format : Public
+    Intel.RealSense.Intrinsics intrinsics : Public
+Struct Intel.RealSense.SoftwarePoseStream: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, Serializable, BeforeFieldInit
+  :System.ValueType
+  Fields:
+    Intel.RealSense.Stream type : Public
+    Int32 index : Public
+    Int32 uid : Public
+    Int32 fps : Public
+    Int32 bpp : Public
+    Intel.RealSense.Format format : Public
+Class Intel.RealSense.SoftwarePoseFrame: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    IntPtr data : Public
+    Intel.RealSense.frame_deleter deleter : Public
+    Int32 stride : Public
+    Int32 bpp : Public
+    Double timestamp : Public
+    Intel.RealSense.TimestampDomain domain : Public
+    Int32 frame_number : Public
+Struct Intel.RealSense.SoftwareMotionStream: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, Serializable, BeforeFieldInit
+  :System.ValueType
+  Fields:
+    Intel.RealSense.Stream type : Public
+    Int32 index : Public
+    Int32 uid : Public
+    Int32 fps : Public
+    Intel.RealSense.Format fmt : Public
+    Intel.RealSense.MotionDeviceIntrinsics intrinsics : Public
+Class Intel.RealSense.SoftwareMotionFrame: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    IntPtr data : Public
+    Intel.RealSense.frame_deleter deleter : Public
+    Double timestamp : Public
+    Intel.RealSense.TimestampDomain domain : Public
+    Int32 frame_number : Public
+    IntPtr profile : Public
+Class Intel.RealSense.Pose: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Intel.RealSense.Math.Vector translation : Public
+    Intel.RealSense.Math.Vector velocity : Public
+    Intel.RealSense.Math.Vector acceleration : Public
+    Intel.RealSense.Math.Quaternion rotation : Public
+    Intel.RealSense.Math.Vector angular_velocity : Public
+    Intel.RealSense.Math.Vector angular_acceleration : Public
+    UInt32 tracker_confidence : Public
+    UInt32 mapper_confidence : Public
+Class Intel.RealSense.InfoCollection: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  Interfaces:
+    System.Collections.Generic.IEnumerable`1[System.Collections.Generic.KeyValuePair`2[Intel.RealSense.CameraInfo,System.String]]
+    System.Collections.IEnumerable
+  Properties:
+    Int32 Count 'get ' : 
+    System.String Item [Intel.RealSense.CameraInfo] 'get ' : 
+  Methods:
+    get_Count(): PrivateScope, Public, HideBySig, SpecialName
+    GetInfo(CameraInfo): PrivateScope, Public, HideBySig
+    Supports(CameraInfo): PrivateScope, Public, HideBySig
+    get_Item(CameraInfo): PrivateScope, Public, HideBySig, SpecialName
+    GetEnumerator(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+Class Intel.RealSense.FwLog: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Base.Object
+  Methods:
+    Create(IntPtr): PrivateScope, Public, Static, HideBySig
+    GetData(): PrivateScope, Public, HideBySig
+    GetSize(): PrivateScope, Public, HideBySig
+    GetTimestamp(): PrivateScope, Public, HideBySig
+    GetSeverity(): PrivateScope, Public, HideBySig
+Class Intel.RealSense.FwParsedLog: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Base.Object
+  Methods:
+    Create(IntPtr): PrivateScope, Public, Static, HideBySig
+    GetMessage(): PrivateScope, Public, HideBySig
+    GetFileName(): PrivateScope, Public, HideBySig
+    GetThreadName(): PrivateScope, Public, HideBySig
+    GetSeverity(): PrivateScope, Public, HideBySig
+    GetLine(): PrivateScope, Public, HideBySig
+    GetTimestamp(): PrivateScope, Public, HideBySig
+    GetSequenceId(): PrivateScope, Public, HideBySig
+Class Intel.RealSense.TerminalParser: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Base.Object
+    Void .ctor(System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    ParseCommand(String): PrivateScope, Public, HideBySig
+    ParseResponse(String, Byte[]): PrivateScope, Public, HideBySig
+Class Intel.RealSense.ErrorMarshaler: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.Runtime.InteropServices.ICustomMarshaler
+  Methods:
+    GetInstance(String): PrivateScope, Public, Static, HideBySig
+    CleanUpManagedData(Object): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    CleanUpNativeData(IntPtr): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    GetNativeDataSize(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    MarshalManagedToNative(Object): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    MarshalNativeToManaged(IntPtr): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+Class Intel.RealSense.ObjectPool: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Methods:
+    Get(IntPtr): PrivateScope, Public, Static, HideBySig
+    Release(T): PrivateScope, Public, Static, HideBySig
+Class Intel.RealSense.Log: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Methods:
+    ToConsole(LogSeverity): PrivateScope, Public, Static, HideBySig
+    ToFile(LogSeverity, String): PrivateScope, Public, Static, HideBySig
+    LogMessage(LogSeverity, String): PrivateScope, Public, Static, HideBySig
+Interface Intel.RealSense.ICompositeDisposable: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Interfaces:
+    System.IDisposable
+  Methods:
+    AddDisposable(IDisposable): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+Class Intel.RealSense.DisposableExtensions: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Methods:
+    DisposeWith(T, ICompositeDisposable): PrivateScope, Public, Static, HideBySig
+Interface Intel.RealSense.IOption: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Properties:
+    Intel.RealSense.Option Key 'get ' : 
+    Single Value 'get set' : 
+    Single Min 'get ' : 
+    Single Max 'get ' : 
+    Single Step 'get ' : 
+    Single Default 'get ' : 
+    Boolean ReadOnly 'get ' : 
+    System.String Description 'get ' : 
+    System.String ValueDescription 'get ' : 
+  Methods:
+    get_Key(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_Value(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    set_Value(Single): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_Min(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_Max(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_Step(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_Default(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_ReadOnly(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_Description(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_ValueDescription(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+Interface Intel.RealSense.IOptions: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Properties:
+    Intel.RealSense.IOptionsContainer Options 'get ' : 
+  Methods:
+    get_Options(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+Interface Intel.RealSense.IOptionsContainer: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Interfaces:
+    System.Collections.Generic.IEnumerable`1[Intel.RealSense.IOption]
+    System.Collections.IEnumerable
+  Properties:
+    Intel.RealSense.IOption Item [Intel.RealSense.Option] 'get ' : 
+  Methods:
+    get_Item(Option): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    Supports(Option): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    OptionValueDescription(Option, Single): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+Struct Intel.RealSense.Math.Vector: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
+  :System.ValueType
+  Fields:
+    Single x : Public
+    Single y : Public
+    Single z : Public
+Struct Intel.RealSense.Math.Quaternion: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
+  :System.ValueType
+  Fields:
+    Single x : Public
+    Single y : Public
+    Single z : Public
+    Single w : Public
+Struct Intel.RealSense.Math.Vertex: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
+  :System.ValueType
+  Fields:
+    Single x : Public
+    Single y : Public
+    Single z : Public
+Struct Intel.RealSense.Math.TextureCoordinate: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
+  :System.ValueType
+  Fields:
+    Single u : Public
+    Single v : Public
+Class Intel.RealSense.Base.Deleter: AutoLayout, AnsiClass, Class, Public, Sealed, HasSecurity
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Invoke(IntPtr): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    BeginInvoke(IntPtr, AsyncCallback, Object): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+Class Intel.RealSense.Base.Object: AutoLayout, AnsiClass, Class, Public, Abstract, BeforeFieldInit
+  Interfaces:
+    System.IDisposable
+  Properties:
+    IntPtr Handle 'get ' : 
+  Methods:
+    get_Handle(): PrivateScope, Public, HideBySig, SpecialName
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+Class Intel.RealSense.Base.PooledObject: AutoLayout, AnsiClass, Class, Public, Abstract, BeforeFieldInit
+  :Intel.RealSense.Base.Object
+Class Intel.RealSense.Base.RefCountedPooledObject: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Intel.RealSense.Base.PooledObject
+Class Intel.RealSense.Base.RefCount: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Int32 count : Public
+Class Intel.RealSense.Context+OnDevicesChangedDelegate: AutoLayout, AnsiClass, Class, NestedPublic, Sealed
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Invoke(DeviceList, DeviceList): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    BeginInvoke(DeviceList, DeviceList, AsyncCallback, Object): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+Class Intel.RealSense.UpdatableDevice+OnFlashBackupProgressDelegate: AutoLayout, AnsiClass, Class, NestedPublic, Sealed
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Invoke(Single): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    BeginInvoke(Single, AsyncCallback, Object): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+Class Intel.RealSense.UpdateDevice+OnUpdateProgressDelegate: AutoLayout, AnsiClass, Class, NestedPublic, Sealed
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Invoke(Single): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    BeginInvoke(Single, AsyncCallback, Object): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+Class Intel.RealSense.CustomProcessingBlock+FrameProcessorCallback: AutoLayout, AnsiClass, Class, NestedPublic, Sealed
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Invoke(Frame, FrameSource): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    BeginInvoke(Frame, FrameSource, AsyncCallback, Object): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+Class Intel.RealSense.Sensor+CameraInfos: AutoLayout, AnsiClass, Class, NestedPublic, BeforeFieldInit
+    Void .ctor(IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.Collections.Generic.IEnumerable`1[System.Collections.Generic.KeyValuePair`2[Intel.RealSense.CameraInfo,System.String]]
+    System.Collections.IEnumerable
+  Properties:
+    System.String Item [Intel.RealSense.CameraInfo] 'get ' : 
+  Methods:
+    get_Item(CameraInfo): PrivateScope, Public, HideBySig, SpecialName
+    GetEnumerator(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+Class Intel.RealSense.SoftwarePoseFrame+PoseFrameInfo: AutoLayout, AnsiClass, Class, NestedPublic, SequentialLayout, Serializable, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Single[] translation : Public, HasFieldMarshal
+    Single[] velocity : Public, HasFieldMarshal
+    Single[] acceleration : Public, HasFieldMarshal
+    Single[] rotation : Public, HasFieldMarshal
+    Single[] angular_velocity : Public, HasFieldMarshal
+    Single[] angular_acceleration : Public, HasFieldMarshal
+    Int32 tracker_confidence : Public
+    Int32 mapper_confidence : Public
